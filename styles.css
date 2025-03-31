@@ -1,0 +1,44 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header {
+  padding: 16px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 8px;
+}
+
+.counter {
+  padding: 16px;
+}
+
+#gold-counter {
+  background-color: gold;
+}
+
+#vp-counter {
+  background-color: lightgrey;
+}
+
+.value {
+  font-size: 36px;
+}
+
+.button-container {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.button-container button {
+  font-size: 20px;
+}
+
+#reset-button {
+  grid-column: 1 / span 2;
+}

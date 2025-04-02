@@ -1,9 +1,11 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
 }
 
 button {
   padding: 8px 12px;
+  font-size: 16px;
 }
 
 .header {
@@ -13,9 +15,12 @@ button {
 .wrapper {
   display: grid;
   margin: 0 auto;
+  padding: 8px;
   max-width: 500px;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 8px;
+  grid-template: repeat(2, auto) 1fr / repeat(2, 1fr);
+  row-gap: 16px;
+  column-gap: 8px;
+  min-height: 100vh;
 }
 
 .counter {
@@ -58,4 +63,64 @@ button {
 
 .reset-confirm-button {
   padding: 8px 24px;
+}
+
+.reference-section {
+  grid-column: 1 / span 2;
+}
+
+.tabs-items {
+  display: flex;
+}
+
+.tabs-item {
+  white-space: nowrap;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+.tabs-item.active {
+  border-color: #999; 
+  border-bottom-color: #fff; 
+}
+
+.tabs-contents {
+  border: 1px solid #999;
+  padding: 16px;
+  position: relative;
+  top: -1px;
+  z-index: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  vertical-align: top;
+}
+
+thead th {
+  background-color: #ddd;
+  vertical-align: middle;
+}
+
+.suit-symbol {
+  font-size: 24px;
+  text-align: center;
+}
+
+.base-cost {
+  white-space: nowrap; 
+}
+
+.instant-cards-helper {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #333;
 }

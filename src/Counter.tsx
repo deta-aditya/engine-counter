@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 export const Counter = (props: {
   className?: string;
   title: string;
@@ -6,7 +8,7 @@ export const Counter = (props: {
   onDecrement: () => void;
 }) => {
   return (
-    <div className={`counter${props.className ? ` ${props.className}` : ''}`}>
+    <div className={classNames('counter', { [String(props.className)]: Boolean(props.className) })}>
       {props.title}
       <div className="value">{props.value}</div>
       <div className="button-container">

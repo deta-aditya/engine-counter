@@ -2,12 +2,18 @@ body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+button {
+  padding: 8px 12px;
+}
+
 .header {
   padding: 16px;
 }
 
 .wrapper {
   display: grid;
+  margin: 0 auto;
+  max-width: 500px;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 8px;
 }
@@ -16,11 +22,11 @@ body {
   padding: 16px;
 }
 
-#gold-counter {
+.gold-counter {
   background-color: gold;
 }
 
-#vp-counter {
+.vp-counter {
   background-color: lightgrey;
 }
 
@@ -39,6 +45,17 @@ body {
   font-size: 20px;
 }
 
-#reset-button {
+.reset-section {
   grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.reset-button, .reset-confirm-text {
+  flex: 1;
+}
+
+.reset-confirm-button {
+  padding: 8px 24px;
 }

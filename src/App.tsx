@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { Counter } from './Counter'
 import { REFERENCES } from './reference';
 import { Tabs } from './Tabs';
@@ -17,6 +17,11 @@ function App() {
   const [goldCount, setGoldCount] = useState(LS_VALUE_GOLD);
   const [vpCount, setVpCount] = useState(LS_VALUE_VP);
   const [showConfirmReset, setShowConfirmReset] = useState(false);
+  const [baseCardScore, setBaseCardScore] = useState(0);
+
+  const goldScore = Math.floor(goldCount / 3);
+  const cardScore = Math.ceil(baseCardScore / 2);
+  const grandTotal = vpCount + goldScore + cardScore;
 
   const handleSetGoldCount = (reducer: (previousValue: number) => number) => {
     setGoldCount(previousValue => {
@@ -32,6 +37,13 @@ function App() {
       localStorage.setItem(LS_KEY_VP, String(newValue));
       return newValue;
     });
+  }
+
+  const handleCardScoreChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const numberValue = Number(event.target.value);
+    if (!Number.isNaN(numberValue)) {
+      setBaseCardScore(numberValue);
+    }
   }
 
   const handleResetCounters = () => {
@@ -148,6 +160,39 @@ function App() {
                 </>
               )
             },
+            {
+              key: REFERENCES.SCORING,
+              title: 'Scoring',
+              content: (
+                <Table 
+                  className='scoring-table'
+                  columns={[
+                    { key: 'source', title: 'Source' },
+                    { key: 'modifier', title: 'Modifier' },
+                    { key: 'value', title: 'Value', render: datum => datum },
+                    { key: 'total', title: 'Total', render: (datum, data) => data.source === 'Grand Total' ? <b>{datum}</b> : datum },
+                  ]}
+                  dataset={[
+                    { source: 'In-Game VP', modifier: '1x', value: vpCount, total: vpCount },
+                    { source: 'Gold', modifier: 'x/3 (Rounded Down)', value: goldCount, total: goldScore },
+                    { 
+                      source: 'Card Base Cost', 
+                      modifier: 'x/2 (Rounded Up)', 
+                      value: (
+                        <input className="card-score-input" type="text" value={baseCardScore} onChange={handleCardScoreChange} /> 
+                      ),
+                      total: cardScore
+                    },
+                    {
+                      source: 'Grand Total',
+                      modifier: '',
+                      value: '',
+                      total: grandTotal,
+                    },
+                  ]}
+                />
+              ),
+            }
           ]}
         />
       </div>

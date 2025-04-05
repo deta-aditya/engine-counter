@@ -125,3 +125,16 @@ thead th {
   font-size: 14px;
   color: #333;
 }
+
+.scoring-table {
+  width: 100%;
+}
+
+.scoring-table td {
+  vertical-align: middle;
+}
+
+.card-score-input {
+  width: 30px;
+  font-size: 16px;
+}

@@ -7,15 +7,37 @@ import { Table } from './Table';
 const INITIAL_GOLD = 3;
 const INITIAL_VP = 0;
 
+const LS_KEY_GOLD = 'engine-counter-gold';
+const LS_KEY_VP = 'engine-counter-vp';
+
+const LS_VALUE_GOLD = Number(localStorage.getItem(LS_KEY_GOLD) || INITIAL_GOLD);
+const LS_VALUE_VP = Number(localStorage.getItem(LS_KEY_VP) || INITIAL_VP);
+
 function App() {
-  const [goldCount, setGoldCount] = useState(INITIAL_GOLD);
-  const [vpCount, setVpCount] = useState(INITIAL_VP);
+  const [goldCount, setGoldCount] = useState(LS_VALUE_GOLD);
+  const [vpCount, setVpCount] = useState(LS_VALUE_VP);
   const [showConfirmReset, setShowConfirmReset] = useState(false);
+
+  const handleSetGoldCount = (reducer: (previousValue: number) => number) => {
+    setGoldCount(previousValue => {
+      const newValue = reducer(previousValue);
+      localStorage.setItem(LS_KEY_GOLD, String(newValue));
+      return newValue;
+    });
+  }
+
+  const handleSetVpCount = (reducer: (previousValue: number) => number) => {
+    setVpCount(previousValue => {
+      const newValue = reducer(previousValue);
+      localStorage.setItem(LS_KEY_VP, String(newValue));
+      return newValue;
+    });
+  }
 
   const handleResetCounters = () => {
     setShowConfirmReset(false);
-    setGoldCount(INITIAL_GOLD);
-    setVpCount(INITIAL_VP);
+    handleSetGoldCount(() => INITIAL_GOLD);
+    handleSetVpCount(() => INITIAL_VP);
   };
 
   return (
@@ -24,15 +46,15 @@ function App() {
         title="Gold"
         className="gold-counter"
         value={goldCount}
-        onDecrement={() => setGoldCount(value => value - 1)}
-        onIncrement={() => setGoldCount(value => value + 1)}
+        onDecrement={() => handleSetGoldCount(value => value - 1)}
+        onIncrement={() => handleSetGoldCount(value => value + 1)}
       />
       <Counter 
         title="Victory Point"
         className="vp-counter"
         value={vpCount}
-        onDecrement={() => setVpCount(value => value - 1)}
-        onIncrement={() => setVpCount(value => value + 1)}
+        onDecrement={() => handleSetVpCount(value => value - 1)}
+        onIncrement={() => handleSetVpCount(value => value + 1)}
       />
       <div className="reset-section">
         {showConfirmReset ? (

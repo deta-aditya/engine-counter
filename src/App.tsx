@@ -179,7 +179,7 @@ function App() {
                       source: 'Card Base Cost', 
                       modifier: 'x/2 (Rounded Up)', 
                       value: (
-                        <input className="card-score-input" type="text" value={baseCardScore} onChange={handleCardScoreChange} /> 
+                        <input className="card-score-input" type="text" value={baseCardScore} onChange={handleCardScoreChange} inputMode="numeric" /> 
                       ),
                       total: cardScore
                     },

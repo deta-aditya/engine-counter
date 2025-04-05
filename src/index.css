@@ -80,6 +80,8 @@ button {
   text-decoration: none;
   position: relative;
   z-index: 1;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .tabs-item.active {

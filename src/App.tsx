@@ -56,7 +56,7 @@ function App() {
           items={[
             {
               key: REFERENCES.SUIT_ACTIONS,
-              title: 'Suit Actions',
+              title: 'Suits',
               content: (
                 <Table
                   columns={[
@@ -80,7 +80,7 @@ function App() {
             },
             {
               key: REFERENCES.ENGINE_CARDS,
-              title: 'Engine Cards',
+              title: 'Engines',
               content: (
                 <Table
                   columns={[
@@ -105,7 +105,7 @@ function App() {
             },
             {
               key: REFERENCES.INSTANT_CARDS,
-              title: 'Instant Cards',
+              title: 'Instants',
               content: (
                 <>
                   <div className="instant-cards-helper">

@@ -84,6 +84,9 @@ function App() {
           </button>
         )}
       </div>
+      <div className="rules-link">
+        <a href="engine-rules-0.1.2.pdf" target="_blank">🔗 Download rulebook (pdf)</a>
+      </div>
       <div className="reference-section">
         <Tabs 
           initialTab={REFERENCES.SUIT_ACTIONS}

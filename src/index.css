@@ -138,3 +138,7 @@ thead th {
   width: 30px;
   font-size: 16px;
 }
+
+.rules-link {
+  grid-column: 1 / span 2;
+}

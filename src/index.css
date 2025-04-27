@@ -120,6 +120,17 @@ thead th {
   white-space: nowrap; 
 }
 
+.engine-cards-helper {
+  margin: 0 0 16px;
+  padding-left: 16px; 
+  font-size: 14px;
+  color: #333;
+}
+
+.engine-cards-helper li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
 .instant-cards-helper {
   margin-bottom: 16px;
   font-size: 14px;

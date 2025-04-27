@@ -110,7 +110,7 @@ function App() {
                     { suit: 'Diamond', symbol: '&diams;', action: 'Draw 3 cards. Choose 2 and discard the rest.' },
                     { suit: 'Club', symbol: '&clubs;', action: 'Gain 3 golds.' },
                     { suit: 'Heart', symbol: '&hearts;', action: 'Gain 1 victory point.' },
-                    { suit: 'Spade', symbol: '&spades;', action: 'Build 1 card with half its base cost, rounded up.' },
+                    { suit: 'Spade', symbol: '&spades;', action: 'Build 1 engine card with half its base cost, rounded up.' },
                   ]}
                 />
               )
@@ -119,25 +119,33 @@ function App() {
               key: REFERENCES.ENGINE_CARDS,
               title: 'Engines',
               content: (
-                <Table
-                  columns={[
-                    { key: 'card', title: 'Card' },
-                    { key: 'baseCost', title: 'Base Cost', cellClassName: 'base-cost', headClassName: 'base-cost' },
-                    { key: 'action', title: 'Action' },
-                  ]}
-                  dataset={[
-                    { card: 'A', baseCost: '1 gold', action: 'Activate 1 stack on the same column or row in the tableau. Cannot be daisy-chained.' },
-                    { card: '2', baseCost: '2 golds', action: 'Gain 2 golds.' },
-                    { card: '3', baseCost: '3 golds', action: 'Draw 1 card.' },
-                    { card: '4', baseCost: '4 golds', action: 'Build 1 card with a flat price of 4 golds or 4 cards.' },
-                    { card: '5', baseCost: '5 golds', action: 'Stack 1 card.' },
-                    { card: '6', baseCost: '6 golds', action: 'Stack 1 card on top of another card with the same suit. When stacking, gain victory points equal to the number of cards in the stack.' },
-                    { card: '7', baseCost: '7 golds', action: 'Build 1 card with full price. Gain 2 victory points when building.' },
-                    { card: '8', baseCost: '8 golds', action: 'Pay 3 golds to draw 1 card and gain 2 victory points.' },
-                    { card: '9', baseCost: '9 golds', action: 'Pay 3 cards in hand to gain 2 golds and 2 victory points.' },
-                    { card: '10', baseCost: '10 golds', action: 'Gain 1 victory point.' },
-                  ]}
-                />
+                <>
+                  <ul className="engine-cards-helper">
+                    <li>Activate all engine cards with the same suit as the chosen suit in this turn.</li>
+                    <li>If you're an active player, activate all cards in a stack if there is a card of the same suit inside it.</li>
+                    <li>if you're a passive player, only activate cards in a stack that has the same suit.</li>
+                    <li>Each stacks may only contain maximum 3 cards.</li>
+                  </ul>
+                  <Table
+                    columns={[
+                      { key: 'card', title: 'Card' },
+                      { key: 'baseCost', title: 'Base Cost', cellClassName: 'base-cost', headClassName: 'base-cost' },
+                      { key: 'action', title: 'Action' },
+                    ]}
+                    dataset={[
+                      { card: 'A', baseCost: '1 gold', action: 'Activate 1 cell on the same column or row in the tableau. Cannot be daisy-chained. Passive players may only activate cards of the same suit.' },
+                      { card: '2', baseCost: '2 golds', action: 'Gain 2 golds.' },
+                      { card: '3', baseCost: '3 golds', action: 'Draw 1 card.' },
+                      { card: '4', baseCost: '4 golds', action: 'Build 1 card with a flat price of 4 golds or 4 cards.' },
+                      { card: '5', baseCost: '5 golds', action: 'Stack 1 card. To stack a card, choose any card in the tableau that hasn\'t been stacked. Then, place them on top of another card.' },
+                      { card: '6', baseCost: '6 golds', action: 'Stack 1 card on top of another card with the same suit. When stacking, gain victory points equal to the number of cards in the stack.' },
+                      { card: '7', baseCost: '7 golds', action: 'Build 1 card with full price. Gain 2 victory points when building.' },
+                      { card: '8', baseCost: '8 golds', action: 'Pay 3 golds to draw 1 card and gain 2 victory points.' },
+                      { card: '9', baseCost: '9 golds', action: 'Pay 3 cards in hand to gain 2 golds and 2 victory points.' },
+                      { card: '10', baseCost: '10 golds', action: 'Gain 1 victory point.' },
+                    ]}
+                  />
+                </>
               )
             },
             {

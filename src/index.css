@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 14px;
   margin: 0;
 }
@@ -44,18 +46,19 @@ button {
 }
 
 .value {
-  font-size: 36px;
+  font-size: 32px;
+  font-weight: 600;
 }
 
 .button-container {
-  margin-top: 32px;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
 .button-container button {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .reset-section {
@@ -167,6 +170,7 @@ thead th:last-child {
 
 .card-score-input {
   width: 30px;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
 }
 

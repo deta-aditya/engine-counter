@@ -125,7 +125,7 @@ function App() {
                     <li>Your tableau has a maximum size of 3x3, and should be activated from left to right, up to bottom.</li>
                     <li>If you're an active player, activate all cards in a stack if there is a card of the same suit inside it.</li>
                     <li>if you're a passive player, only activate cards in a stack that has the same suit.</li>
-                    <li>Each stacks may only contain maximum 3 cards.</li>
+                    <li>Each stacks may only contain maximum of 3 cards.</li>
                   </ul>
                   <Table
                     columns={[
@@ -134,7 +134,7 @@ function App() {
                       { key: 'action', title: 'Action' },
                     ]}
                     dataset={[
-                      { card: 'A', baseCost: '1 gold', action: 'Activate 1 cell on the same column or row. Cannot be daisy-chained. Passive players may only activate cards of the same suit.' },
+                      { card: 'A', baseCost: '1 gold', action: 'Activate 1 cell on the same column or row. Cannot be daisy-chained.' },
                       { card: '2', baseCost: '2 golds', action: 'Gain 2 golds.' },
                       { card: '3', baseCost: '3 golds', action: 'Draw 1 card.' },
                       { card: '4', baseCost: '4 golds', action: 'Build 1 card with a flat price of 4 golds or 4 cards.' },

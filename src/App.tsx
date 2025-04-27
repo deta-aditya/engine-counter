@@ -25,7 +25,7 @@ function App() {
 
   const handleSetGoldCount = (reducer: (previousValue: number) => number) => {
     setGoldCount(previousValue => {
-      const newValue = reducer(previousValue);
+      const newValue = Math.max(0, reducer(previousValue));
       localStorage.setItem(LS_KEY_GOLD, String(newValue));
       return newValue;
     });
@@ -33,7 +33,7 @@ function App() {
 
   const handleSetVpCount = (reducer: (previousValue: number) => number) => {
     setVpCount(previousValue => {
-      const newValue = reducer(previousValue);
+      const newValue = Math.max(0, reducer(previousValue));
       localStorage.setItem(LS_KEY_VP, String(newValue));
       return newValue;
     });

@@ -1,11 +1,12 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 14px;
   margin: 0;
 }
 
 button {
   padding: 8px 12px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 4px;
   background-color: transparent;
   background: linear-gradient(#eee, #ddd);
@@ -89,7 +90,7 @@ button {
   text-decoration: none;
   position: relative;
   z-index: 1;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   border-radius: 4px 4px 0 0;
 }
@@ -142,7 +143,7 @@ thead th:last-child {
 .engine-cards-helper {
   margin: 0 0 16px;
   padding-left: 16px; 
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
 }
 
@@ -152,7 +153,7 @@ thead th:last-child {
 
 .instant-cards-helper {
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
 }
 
@@ -171,4 +172,13 @@ thead th:last-child {
 
 .rules-link {
   grid-column: 1 / span 2;
+}
+
+.tips {
+  padding-left: 16px;
+  margin: 0;
+}
+
+.tips li:not(:last-child) {
+  margin-bottom: 8px;
 }

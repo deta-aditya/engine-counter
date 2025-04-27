@@ -122,6 +122,7 @@ function App() {
                 <>
                   <ul className="engine-cards-helper">
                     <li>Activate all engine cards on the tableau with the same suit as the chosen suit in this turn.</li>
+                    <li>Your tableau has a maximum size of 3x3, and should be activated from left to right, up to bottom.</li>
                     <li>If you're an active player, activate all cards in a stack if there is a card of the same suit inside it.</li>
                     <li>if you're a passive player, only activate cards in a stack that has the same suit.</li>
                     <li>Each stacks may only contain maximum 3 cards.</li>
@@ -175,34 +176,52 @@ function App() {
               key: REFERENCES.SCORING,
               title: 'Scoring',
               content: (
-                <Table 
-                  className='scoring-table'
-                  columns={[
-                    { key: 'source', title: 'Source' },
-                    { key: 'modifier', title: 'Modifier' },
-                    { key: 'value', title: 'Value', render: datum => datum },
-                    { key: 'total', title: 'Total', render: (datum, data) => data.source === 'Grand Total' ? <b>{datum}</b> : datum },
-                  ]}
-                  dataset={[
-                    { source: 'In-Game VP', modifier: '1x', value: vpCount, total: vpCount },
-                    { source: 'Gold', modifier: 'x/3 (Rounded Down)', value: goldCount, total: goldScore },
-                    { 
-                      source: 'Card Base Cost', 
-                      modifier: 'x/2 (Rounded Up)', 
-                      value: (
-                        <input className="card-score-input" type="text" value={baseCardScore} onChange={handleCardScoreChange} inputMode="numeric" /> 
-                      ),
-                      total: cardScore
-                    },
-                    {
-                      source: 'Grand Total',
-                      modifier: '',
-                      value: '',
-                      total: grandTotal,
-                    },
-                  ]}
-                />
+                <>
+                  <div className="instant-cards-helper">
+                    The game ends on the next turn when the deck is exhausted, or any player gains at least 40 victory points.
+                  </div>
+                  <Table 
+                    className='scoring-table'
+                    columns={[
+                      { key: 'source', title: 'Source' },
+                      { key: 'modifier', title: 'Modifier' },
+                      { key: 'value', title: 'Value', render: datum => datum },
+                      { key: 'total', title: 'Total', render: (datum, data) => data.source === 'Grand Total' ? <b>{datum}</b> : datum },
+                    ]}
+                    dataset={[
+                      { source: 'In-Game VP', modifier: '1x', value: vpCount, total: vpCount },
+                      { source: 'Gold', modifier: 'x/3 (Rounded Down)', value: goldCount, total: goldScore },
+                      { 
+                        source: 'Card Base Cost', 
+                        modifier: 'x/2 (Rounded Up)', 
+                        value: (
+                          <input className="card-score-input" type="text" value={baseCardScore} onChange={handleCardScoreChange} inputMode="numeric" /> 
+                        ),
+                        total: cardScore
+                      },
+                      {
+                        source: 'Grand Total',
+                        modifier: '',
+                        value: '',
+                        total: grandTotal,
+                      },
+                    ]}
+                  />
+                </>
               ),
+            },
+            {
+              key: REFERENCES.TIPS,
+              title: 'Tips',
+              content: (
+                <ul className="tips">
+                  <li>Cards on your hand <b>won't be counted</b> as victory points. Use them efficiently throughout the game.</li>
+                  <li>Some engine cards provide a <b>powerful combo</b> when placed on a right position.</li>
+                  <li>Utilize <b>stacking ability</b> to better position your cards, and to free space in your tableau.</li>
+                  <li>Do not underestimate <b>instant cards</b>! They can help you a lot in getting out of unfortunate situations.</li>
+                  <li>Try to <b>analyze other player's tableau</b> so that you can take advantage of their weakness.</li>
+                </ul>
+              )
             }
           ]}
         />

@@ -11,6 +11,7 @@ button {
   background: linear-gradient(#eee, #ddd);
   border: 1px solid #ccc;
   cursor: pointer;
+  color: #101010;
 }
 
 .header {
